@@ -1,23 +1,13 @@
-import { Types } from "mongoose";
-import { assignmentStatus } from "./assignment.constant";
+import { Types, Document } from "mongoose";
 
 export interface IAssignment {
   _id?: string;
   title: string;
   description: string;
   deadline: Date;
-  createdBy: Types.ObjectId; // instructor id
+  createdBy: Types.ObjectId;
   createdAt?: Date;
   updatedAt?: Date;
 }
 
-export interface ISubmission {
-  _id?: string;
-  assignmentId: Types.ObjectId;
-  studentId: Types.ObjectId;
-  submissionText: string;
-  status: typeof assignmentStatus[number];
-  feedback?: string;
-  submittedAt?: Date;
-  updatedAt?: Date;
-}
+export type AssignmentDoc = IAssignment & Document;

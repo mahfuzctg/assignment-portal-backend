@@ -1,5 +1,4 @@
 
-
 export type SubmissionStatus = "Pending" | "Accepted" | "Rejected";
 
 export interface SubmissionCountResult {
