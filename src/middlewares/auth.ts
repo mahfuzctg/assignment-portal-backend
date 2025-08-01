@@ -1,8 +1,15 @@
 import { RequestHandler } from "express";
 import jwt from "jsonwebtoken";
 import config from "../config";
+import { Types } from "mongoose";
 
-export const auth: RequestHandler = (req: any, res, next) => {
+interface JwtPayload {
+  _id:  Types.ObjectId | string; 
+  email: string;
+  role: string;
+}
+
+export const auth: RequestHandler = (req, res, next) => {
   const token = req.headers.authorization?.split(" ")[1];
 
   if (!token) {
@@ -10,7 +17,8 @@ export const auth: RequestHandler = (req: any, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, config.jwt_secret as string);
+    const decoded = jwt.verify(token, config.jwt_secret as string) as JwtPayload;
+          // @ts-ignore
     req.user = decoded;
     next();
   } catch (error) {

@@ -1,9 +1,11 @@
 import express from "express";
 import { AssignmentController } from "./assignment.controller";
+import { auth } from "../../middlewares/auth";
 
 const router = express.Router();
 
-router.post("/", AssignmentController.create);
-router.get("/my", AssignmentController.getMyAssignments);
+router.post("/", auth, AssignmentController.create);
+router.get("/my", auth, AssignmentController.getMyAssignments);
 
-export default router;
+
+export const AssignmentRoutes = router;

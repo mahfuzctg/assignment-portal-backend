@@ -11,11 +11,11 @@ export interface Assignment {
   title: string;
   description: string;
   deadline: Date;
-  // Add other fields as needed
+ 
 }
 
 export interface Submission {
-  studentId: string; // or ObjectId, etc.
+  studentId: string;
   assignmentId: string;
   status: SubmissionStatus;
   feedback?: string;
