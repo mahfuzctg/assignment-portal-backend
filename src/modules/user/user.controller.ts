@@ -1,6 +1,6 @@
-
 import { Request, Response, NextFunction } from "express";
 import { UserService } from "./user.service";
+import { ApiError } from "../../utils/ApiError";
 
 export const UserController = {
   getAllUsers: async (_req: Request, res: Response, next: NextFunction) => {
@@ -14,8 +14,12 @@ export const UserController = {
 
   getUserById: async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const user = await UserService.getUserById(req.params.id);
-      if (!user) return res.status(404).json({ success: false, message: "User not found" });
+      const { id } = req.params;
+      if (!id) throw new ApiError(400, "User ID is required");
+
+      const user = await UserService.getUserById(id);
+      if (!user) throw new ApiError(404, "User not found");
+
       res.status(200).json({ success: true, data: user });
     } catch (error) {
       next(error);
@@ -33,8 +37,12 @@ export const UserController = {
 
   deleteUser: async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const deleted = await UserService.deleteUserById(req.params.id);
-      if (!deleted) return res.status(404).json({ success: false, message: "User not found" });
+      const { id } = req.params;
+      if (!id) throw new ApiError(400, "User ID is required");
+
+      const deleted = await UserService.deleteUserById(id);
+      if (!deleted) throw new ApiError(404, "User not found");
+
       res.status(200).json({ success: true, message: "User deleted successfully" });
     } catch (error) {
       next(error);
