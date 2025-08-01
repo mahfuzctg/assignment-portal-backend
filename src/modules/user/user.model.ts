@@ -27,8 +27,8 @@ const userSchema = new Schema<IUser>(
   {
     timestamps: true,
     toJSON: {
-      transform: function (doc, ret) {
-        delete ret.password; // Never expose password
+      transform(_doc, ret: Partial<IUser>) {
+        delete (ret as any).password; 
         return ret;
       },
     },

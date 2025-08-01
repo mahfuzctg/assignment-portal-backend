@@ -3,6 +3,8 @@ import { AuthService } from "./auth.service";
 import { sendResponse } from "../../utils/sendResponse";
 
 
+
+
 export const AuthController = {
   register: async (req: Request, res: Response, next: NextFunction) => {
     try {

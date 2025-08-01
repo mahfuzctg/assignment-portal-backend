@@ -1,16 +1,18 @@
 import { Response } from "express";
 
+type TMeta = {
+  total?: number;
+  page?: number;
+  limit?: number;
+};
+
 type TSendResponse<T> = {
   res: Response;
   statusCode: number;
   success: boolean;
   message: string;
-  data?: T;
-  meta?: {
-    total?: number;
-    page?: number;
-    limit?: number;
-  };
+  data?: T | null;
+  meta?: TMeta;
 };
 
 export const sendResponse = <T>({
@@ -18,13 +20,18 @@ export const sendResponse = <T>({
   statusCode,
   success,
   message,
-  data,
+  data = null,
   meta,
 }: TSendResponse<T>): void => {
-  res.status(statusCode).json({
+  const responsePayload: Record<string, any> = {
     success,
     message,
     data,
-    meta,
-  });
+  };
+
+  if (meta) {
+    responsePayload.meta = meta;
+  }
+
+  res.status(statusCode).json(responsePayload);
 };
