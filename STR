@@ -1,0 +1,44 @@
+// assignment-portal-backend/
+// │
+// ├── src/
+// │   ├── app.ts
+// │   ├── server.ts
+// │   ├── config/
+// │   │   ├── index.ts
+// │   ├── middlewares/
+// │   │   ├── errorHandler.ts
+// │   │   ├── validateRequest.ts
+// │   │   └── auth.ts
+// │   ├── utils/
+// │   │   └── sendResponse.ts
+// │   ├── modules/
+// │   │   ├── user/
+// │   │   │   ├── user.constant.ts
+// │   │   │   ├── user.interface.ts
+// │   │   │   ├── user.validation.ts
+// │   │   │   ├── user.model.ts
+// │   │   │   ├── user.service.ts
+// │   │   │   ├── user.controller.ts
+// │   │   │   └── user.route.ts
+// │   │   ├── auth/
+// │   │   │   ├── auth.constant.ts
+// │   │   │   ├── auth.interface.ts
+// │   │   │   ├── auth.validation.ts
+// │   │   │   ├── auth.service.ts
+// │   │   │   ├── auth.controller.ts
+// │   │   │   └── auth.route.ts
+// │   │   ├── assignment/
+// │   │   │   ├── assignment.constant.ts
+// │   │   │   ├── assignment.interface.ts
+// │   │   │   ├── assignment.validation.ts
+// │   │   │   ├── assignment.model.ts
+// │   │   │   ├── assignment.service.ts
+// │   │   │   ├── assignment.controller.ts
+// │   │   │   └── assignment.route.ts
+// │   └── routes/
+// │       └── index.ts
+// │
+// ├── .env
+// ├── tsconfig.json
+// ├── package.json
+// └── README.md
