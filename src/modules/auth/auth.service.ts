@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { User } from "../user/user.model";
+
 import config from "@/config";
 import { IAuthUser, ITokenPayload } from "./auth.interface";
 
