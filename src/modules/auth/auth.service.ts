@@ -1,8 +1,8 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-
-import config from "@/config";
 import { IAuthUser, ITokenPayload } from "./auth.interface";
+import config from "../../config";
+import { User } from "../user/user.model";
 
 export const AuthService = {
   registerUser: async (payload: any) => {
