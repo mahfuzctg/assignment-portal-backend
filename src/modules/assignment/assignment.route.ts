@@ -22,14 +22,14 @@ router.get(
 
 router.patch(
   "/assignments/submissions/:id/status",
-  authMiddleware,
+  auth,
   validateRequest(updateSubmissionStatusSchema),
   AssignmentController.updateSubmissionStatus
 );
 
 router.get(
   "/assignments/submissions/status-chart",
-  authMiddleware,
+  auth,
   AssignmentController.getSubmissionStatusChartData
 );
 
