@@ -1,38 +1,21 @@
+// submission.routes.ts
 import express from "express";
 import { SubmissionController } from "./submission.controller";
+import { auth } from "../../middlewares/auth";
 import { validateRequest } from "../../middlewares/validateRequest";
 import { submissionZodSchema } from "./submission.validation";
-import { auth } from "../../middlewares/auth";
 
 const router = express.Router();
 
-// Student submits assignment
-router.post(
-  "/",
-  auth,
-  validateRequest(submissionZodSchema),
-  SubmissionController.submitAssignment
-);
+// Student submits or updates assignment submission
+router.post("/", auth, validateRequest(submissionZodSchema), SubmissionController.submitAssignment);
 
-// Instructor views all student submissions
-router.get(
-  "/",
-  auth,
-  SubmissionController.getAllSubmissions
-);
+// Student views own submissions with status & feedback
+router.get("/mine", auth, SubmissionController.getMySubmissions);
 
-// Instructor updates submission status + feedback
-router.patch(
-  "/:id",
-  auth,
-  SubmissionController.updateSubmissionStatus
-);
 
-// Instructor gets status-wise 
-router.get(
-  "/stats",
-  auth,
-  SubmissionController.getSubmissionStats
-);
+router.get("/", auth, SubmissionController.getAllSubmissions); // Instructor views all submissions
+router.patch("/:id", auth, SubmissionController.updateSubmission); // Instructor updates feedback/status
+
 
 export const SubmissionRoutes = router;

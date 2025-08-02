@@ -1,6 +1,7 @@
+// submission.validation.ts
 import * as z from "zod";
 
 export const submissionZodSchema = z.object({
-  assignmentId: z.string(),
-  submissionText: z.string().min(5),
+  assignmentId: z.string().optional(),       
+  submissionText: z.string().optional(),    
 });

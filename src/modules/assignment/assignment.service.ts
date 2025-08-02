@@ -9,4 +9,8 @@ export const AssignmentService = {
   getAssignmentsByInstructor: async (instructorId: string) => {
     return Assignment.find({ createdBy: instructorId });
   },
+   getAllAssignments: async () => {
+    return Assignment.find({});
+  },
+
 };

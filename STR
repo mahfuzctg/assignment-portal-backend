@@ -42,3 +42,25 @@
 // ├── tsconfig.json
 // ├── package.json
 // └── README.md
+
+
+
+//  Instructor
+// Feature	Implemented
+// Create assignments?
+// 	Yes (AssignmentController.create)
+// View all student submissions	 ?
+// Yes (SubmissionController.getAllSubmissions)
+// Provide feedback & update status	?
+//  Yes (SubmissionController.updateSubmissionStatus)
+// View submission stats as pie chart data?
+// 	 Yes (SubmissionController.getSubmissionStats)
+
+// Student
+// Feature	Implemented
+// View available assignments? 	
+// Assumed to be handled via additional endpoint (not shown but simple to add)
+// Submit an assignment?	 
+// Yes (SubmissionController.submitAssignment)
+// View submitted assignments with status & feedback? 
+//  Yes (SubmissionService.submit, assuming another GET route for student like /submissions/my)

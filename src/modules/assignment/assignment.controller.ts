@@ -3,7 +3,10 @@ import { isValidObjectId } from "mongoose";
 import { AssignmentService } from "./assignment.service";
 
 export const AssignmentController = {
+  
   create: async (req: Request, res: Response) => {
+
+    
       // @ts-ignore
     const instructorId = req.user?._id;
 
@@ -13,6 +16,11 @@ export const AssignmentController = {
 
     const result = await AssignmentService.createAssignment(req.body, instructorId.toString());
     res.status(201).json({ success: true, data: result });
+  },
+
+    getAllAssignments: async (_req: Request, res: Response) => {
+    const assignments = await AssignmentService.getAllAssignments();
+    res.json({ success: true, data: assignments });
   },
 
   getMyAssignments: async (req: Request, res: Response) => {

@@ -1,15 +1,13 @@
-import { Types, Document } from "mongoose";
-import { submissionStatus } from "./submission.constant";
+// submission.interface.ts
+import { Types } from "mongoose";
 
 export interface ISubmission {
   _id?: string;
-  assignmentId: Types.ObjectId;
-  studentId: Types.ObjectId;
-  submissionText: string;
-  status: typeof submissionStatus[number];
+  assignmentId: Types.ObjectId | string;
+  studentId: Types.ObjectId | string;
+  submissionText: string;  
+  status?: "Pending" | "Accepted" | "Rejected";
   feedback?: string;
-  submittedAt?: Date;
+  createdAt?: Date;
   updatedAt?: Date;
 }
-
-export type SubmissionDoc = ISubmission & Document;

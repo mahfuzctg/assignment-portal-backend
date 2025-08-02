@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.post("/", auth, AssignmentController.create);
 router.get("/my", auth, AssignmentController.getMyAssignments);
+router.get("/", AssignmentController.getAllAssignments);
+
 
 
 export const AssignmentRoutes = router;
